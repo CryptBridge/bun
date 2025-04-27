@@ -1,0 +1,31 @@
+name: Test
+on: [push, pull_request]
+
+jobs:
+  bun-php:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with: 
+          bun-version: latest
+      
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with: 
+          php-version: "8.3"
+          tools: composer
+      
+      - name: Install PHP dependencies
+        run: composer install --working-dir=php-interop --no-interaction --no-progress
+      
+      - name: Install Bun dependencies
+        run: bun install
+      
+      - name: Generate test vectors
+        run: php php-interop/test-vectors.php
+      
+      - name: Run tests
+        run: bun test

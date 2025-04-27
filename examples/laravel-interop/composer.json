@@ -1,0 +1,13 @@
+{
+  "name": "laravel-bun-crypto/interop-test",
+  "type": "project",
+  "description": "Interoperability tests for Laravel-Bun Crypto with illuminate/encryption",
+  "license": "MIT",
+  "require": {
+    "php": "^8.1",
+    "illuminate/encryption": "^10.0"
+  },
+  "scripts": {
+    "test": "php test-vectors.php"
+  }
+}

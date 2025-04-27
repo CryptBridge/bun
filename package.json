@@ -1,12 +1,63 @@
 {
-  "name": "cryptbridge-bun-laravel-cryptography",
-  "module": "index.ts",
+  "name": "cryptbridge",
+  "version": "1.0.0",
+  "description": "The AES-256-CBC bridge for Laravel ⇄ Bun. CryptBridge lets your polyglot stack services in Bun read and write encrypted blobs compatible with Laravel's Crypt::encryptString()",
+  "module": "dist/index.js",
   "type": "module",
-  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "bun test",
+    "prepublishOnly": "bun run build"
+  },
+  "keywords": [
+    "laravel",
+    "encryption",
+    "cryptography",
+    "bun",
+    "typescript",
+    "aes",
+    "hmac",
+    "polyglot",
+    "cross-language",
+    "php",
+    "security"
+  ],
+  "author": "CryptBridge Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cryptbridge/bun.git"
+  },
+  "homepage": "https://github.com/cryptbridge/bun",
+  "bugs": {
+    "url": "https://github.com/cryptbridge/bun/issues"
+  },
+  "dependencies": {
+    "js-base64": "^3.7.7",
+    "php-serialize": "^5.1.3"
+  },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/node": "^20.10.0"
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "bun": ">=1.0.0"
   }
 }
